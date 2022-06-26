@@ -1,1 +1,41 @@
+## 1 - COUNT
+
+SELECT 
+  COUNT(*) AS books_number
+FROM books;
+
+SELECT 
+  COUNT(DISTINCT author_lname) AS author_last_name_count 
+FROM books;
+
+SELECT 
+  COUNT(title) AS numbers_of_the 
+FROM books WHERE title LIKE '%the%';
+
+## 2 - GROUP BY
+
+SELECT title, author_lname FROM books GROUP BY author_lname;
+
+SELECT 
+  COUNT(*) AS numbers_books_by_author, 
+  author_lname 
+FROM books GROUP BY author_lname;
+
+SELECT 
+  author_lname, 
+  author_fname, 
+  COUNT(*) AS numbers_books_by_author
+FROM books GROUP BY author_fname, author_lname;
+
+SELECT
+  CONCAT(
+    'In ', 
+    released_year,
+    ', ', 
+    COUNT(*), 
+    ' book(s) released') AS numbers_released_by_year 
+FROM books GROUP BY released_year;
+  
+## 3 - MIN and MAX
+
 
