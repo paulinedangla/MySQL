@@ -62,10 +62,16 @@ SELECT
   CONCAT(SUBSTRING(title, 1, 10),'...') AS short_title
 FROM books;
 
+SELECT
+   CONCAT(SUBSTRING(title, 1, 10), '...') AS 'short title',
+   CONCAT(author_lname, ',', author_fname) AS author,
+   CONCAT(stock_quantity, ' in stock') AS quantity
+FROM books;
+
 ## 4 - REPLACE
 
-SELECT 
-  REPLACE(title, 'e', '3') 
+SELECT
+  REPLACE(title, ' ', '->')
 FROM books;
 
 SELECT
@@ -74,5 +80,27 @@ FROM books;
 
 ## 5 - REVERSE
 
+SELECT REVERSE(title) FROM books;
 
+SELECT 
+   author_lname AS forwards,
+   REVERSE(author_lname) AS backwards 
+FROM books;
 
+## 6 - CHAR_LENGTH
+
+SELECT title, 
+  CHAR_LENGTH(title) AS character_count  
+FROM books;
+
+SELECT
+  CONCAT(author_lname, ' is ', CHAR_LENGTH(author_lname), ' characters long') AS last_name_length
+FROM books;
+
+## 7 - UPPER and LOWER
+
+SELECT LOWER(title) FROM books;
+
+SELECT
+  UPPER(CONCAT('my favorite book is ', title)) AS favorite_book
+FROM books;
