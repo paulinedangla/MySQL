@@ -38,4 +38,15 @@ FROM books GROUP BY released_year;
   
 ## 3 - MIN and MAX
 
+SELECT MIN(released_year) FROM books;
+
+-- What is the longest book ? I can choose two requests to answer for this question --
+
+-- The first answer with a sub request - 
+
+SELECT title, pages FROM books WHERE pages =(SELECT MAX(pages) FROM books);
+
+-- Or, a shorter answer without MAX --
+
+SELECT title, pages FROM books ORDER BY pages DESC LIMIT 1;
 
