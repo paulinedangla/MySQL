@@ -50,3 +50,21 @@ SELECT title, pages FROM books WHERE pages =(SELECT MAX(pages) FROM books);
 
 SELECT title, pages FROM books ORDER BY pages DESC LIMIT 1;
 
+## 4 - MIN and MAX with GROUP BY
+
+SELECT
+  author_lname,
+  author_fname,
+  MIN(released_year)
+FROM books
+GROUP BY author_lname, author_fname;
+
+SELECT
+  CONCAT(author_lname, ' ', author_fname) AS author,
+  MAX(pages) AS longest_book
+FROM books
+GROUP BY author_lname, author_fname;
+
+## 5 - SUM
+ 
+ 
