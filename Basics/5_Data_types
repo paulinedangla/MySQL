@@ -1,0 +1,44 @@
+## 1 - CHAR and VARCHAR
+
+CREATE TABLE dogs (name CHAR(5), breed VARCHAR(10));
+
+INSERT INTO dogs (name, breed) 
+VALUES
+  ('bob', 'beagle'),
+  ('robby', 'corgi'),
+  ('Princess Jane', 'retreiver');
+  
+SELECT * FROM dogs;
+  
+-- Princess Jane is truncated beacause her name has more than 5 characters --
+  
+## 2 - DECIMAL
+  
+CREATE TABLE items (price DECIMAL(5,2));
+  
+INSERT INTO items (price) 
+VALUES
+  (7),
+  (7897654),
+  (34.88),
+  (298.9999),
+  (1.9999);
+  
+SELECT * FROM items;
+  
+-- The number 7897654 is too long for DECIMAL(5,2) so it sets a default value of 999.99 --
+-- The number 298.999 is too long for DECIMAL(5,2) so it sets a rounded value of 299 --
+  
+## 3 - FLOAT and DOUBLE
+  
+CREATE TABLE thingies (price FLOAT);
+  
+INSERT INTO thingies (price) 
+VALUES
+  (88.45),
+  (8877.45), 
+  (8877665544.45);
+  
+-- The number 8877665544.45 is too long for FLOAT so it sets a value of 8877670000 --
+
+## 4 - DATE, TIME and DATETIME
