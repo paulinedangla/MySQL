@@ -110,7 +110,30 @@ SELECT birthdt, DATE_ADD(birthdt, INTERVAL 1 MONTH) FROM people;
 
 SELECT birthdt, birthdt + INTERVAL 15 MONTH + INTERVAL 10 HOUR FROM people;
 
+## 8 - Working with TIMESTAMPS
 
+CREATE TABLE comments (
+  contents VARCHAR(100),
+  created_at TIMESTAMP DEFAULT NOW());
 
-  
+INSERT INTO comments (contents) VALUES ('lol it was a funny article');
+INSERT INTO comments (contents) VALUES  ('lol it was an interesting article');
+INSERT INTO comments (contents) VALUES ('I found this offensive');
 
+SELECT * FROM comments ORDER BY created_at DESC;
+
+CREATE TABLE comments2( 
+  content VARCHAR(100), 
+  changed_at TIMESTAMP DEFAULT NOW() ON UPDATE CURRENT_TIMESTAMP);
+
+INSERT INTO comments2 (content) VALUES ('I found this offensive');
+INSERT INTO comments2 (content) VALUES ('LOL');
+INSERT INTO comments2 (content) VALUES ('I love cats and dogs');
+
+SELECT * FROM comments2;
+
+UPDATE comments2 SET content='This is not gibberish' WHERE content='LOL';
+
+SELECT * FROM comments2;
+
+SELECT * FROM comments2 ORDER BY changed_at DESC;
