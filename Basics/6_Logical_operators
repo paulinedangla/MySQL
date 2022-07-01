@@ -59,8 +59,8 @@ OR stock_quantity > 100;
 ## 7 - BETWEEN
 
 SELECT * FROM books 
-WHERE released_year 
-BETWEEN 2004 AND 2015;
+WHERE pages 
+BETWEEN 100 AND 200;
 
 SELECT * FROM books 
 WHERE released_year 
@@ -84,3 +84,40 @@ ORDER BY released_year;
 SELECT title, released_year FROM books 
 WHERE released_year >= 2000 
 AND released_year % 2 != 0;
+
+SELECT * FROM books 
+WHERE SUBSTRING(author_lname, 1, 1) 
+IN('C', 'S');
+
+## 9 - CASE STATEMENTS
+
+SELECT title, released_year,
+  CASE
+    WHEN released_year >=2000 THEN 'Modern Lit'
+    ELSE '20th Century Lit'
+  END AS GENRE
+FROM books;
+
+SELECT title, stock_quantity,
+  CASE
+    WHEN stock_quantity BETWEEN 0 AND 50 THEN '*'
+    WHEN stock_quantity BETWEEN 51 AND 100 THEN '**'
+    ELSE '***'
+  END AS Stock
+FROM books;
+
+SELECT title, author_lname,  
+  CASE 
+    WHEN title LIKE '%stories%' THEN 'Short Stories' 
+    WHEN title='Just Kids' OR title LIKE 'A Heartbreaking Work%' THEN 'Memoir' 
+    ELSE 'Novel' 
+  END AS Type 
+FROM books;
+    
+SELECT author_fname, author_lname,
+  CASE
+    WHEN COUNT(*)=1 THEN '1 book'
+    ELSE CONCAT(COUNT(*), ' books')
+  END AS count_by_author
+FROM books
+GROUP BY author_lname, author_fname;
