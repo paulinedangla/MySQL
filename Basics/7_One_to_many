@@ -11,7 +11,9 @@ CREATE TABLE orders(
     order_date DATE,
     amount DECIMAL(8,2),
     customer_id INT,
-    FOREIGN KEY(customer_id) REFERENCES customers(id));
+    FOREIGN KEY(customer_id) 
+        REFERENCES customers(id))
+        ON DELETE CASCADE;
 
 INSERT INTO customers (first_name, last_name, email) 
 VALUES ('Boy', 'George', 'george@gmail.com'),
@@ -35,3 +37,45 @@ SELECT * FROM orders WHERE customer_id =
         WHERE last_name='George'
     );
 
+## 3 - Inner join
+
+-- Implicit inner join --
+
+SELECT first_name, last_name, amount
+FROM customers, orders 
+WHERE customers.id = orders.customer_id;
+
+-- Explicit inner join --
+
+SELECT 
+    first_name,  
+    last_name,  
+    SUM(amount) AS total_spent 
+FROM customers 
+JOIN orders 
+    ON customers.id=orders.customer_id 
+GROUP BY orders.customer_id 
+ORDER BY total_spent DESC;
+
+## 4 - Left join
+
+SELECT 
+    first_name,  
+    last_name,  
+    IFNULL(SUM(amount), 0) AS total_spent 
+FROM customers 
+LEFT JOIN orders 
+    ON customers.id = orders.customer_id 
+GROUP BY customers.id 
+ORDER BY total_spent DESC;
+
+## 5 - Right join
+
+SELECT 
+    IFNULL(first_name,'MISSING') AS first_name, 
+    IFNULL(last_name,'USER') AS last_name, 
+    SUM(amount) AS total_spent 
+FROM customers 
+RIGHT JOIN orders 
+    ON customers.id = orders.customer_id 
+GROUP BY first_name, last_name;
