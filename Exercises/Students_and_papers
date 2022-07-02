@@ -7,7 +7,8 @@ CREATE TABLE papers(
     grade INT, 
     student_id INT,  
     FOREIGN KEY(student_id) 
-        REFERENCES students(id));
+        REFERENCES students(id)
+        ON DELETE CASCADE);
 
 INSERT INTO students (first_name) VALUES
     ('Caleb'),
@@ -50,22 +51,22 @@ SELECT
 
 SELECT 
     first_name, 
-    IFNULL(AVG(grade), 0) AS grade 
+    IFNULL(AVG(grade), 0) AS average
 FROM students 
 LEFT JOIN papers 
     ON students.id=papers.student_id 
 GROUP BY students.id 
-ORDER BY grade DESC;
+ORDER BY average DESC;
 
 SELECT 
     first_name,  
-    IFNULL(AVG(grade), 0) AS grade, 
+    IFNULL(AVG(grade), 0) AS average, 
     CASE 
-        WHEN grade > 75 THEN 'PASSING' 
+        WHEN average >= 75 THEN 'PASSING' 
         ELSE 'FAILLING' 
     END AS passing_status 
 FROM students 
 LEFT JOIN papers 
     ON students.id=papers.student_id 
 GROUP BY students.id 
-ORDER BY grade;
+ORDER BY average;
