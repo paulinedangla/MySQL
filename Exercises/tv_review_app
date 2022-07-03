@@ -1,3 +1,5 @@
+-- Creating tables and inserting datas -- 
+
 CREATE DATABASE tv_review_app;
 USE tv_review_app;
 
@@ -58,3 +60,83 @@ INSERT INTO reviews(series_id, reviewer_id, rating) VALUES
   (14,3,8.9),(14,4,8.9);
   
   
+-- Challenge 1 --
+
+SELECT
+  title,
+  rating
+FROM series
+JOIN reviews
+  ON series.id=reviews.series_id;
+
+-- Challenge 2 with average rating --
+
+SELECT 
+  title,  
+  AVG(rating) AS avg_rating 
+FROM series 
+JOIN reviews 
+  ON series.id=reviews.series_id 
+GROUP BY series.id 
+ORDER BY average_rating;
+
+-- Challenge 3 --
+
+SELECT
+  first_name,
+  last_name,
+  rating
+FROM reviewers
+JOIN reviews
+  ON reviewers.id = reviews.reviewer_id;
+  
+-- Challenge 4 with unreviewed series --
+
+ - Step 1 : knowing the null values - 
+
+SELECT 
+  title, 
+  rating 
+FROM series 
+LEFT JOIN reviews 
+  ON series.id=reviews.series_id 
+GROUP BY series.id;
+
+ - Step 2 : giving the title of ureviewed values - 
+
+SELECT 
+  title AS unreviewed_series 
+FROM series 
+LEFT JOIN reviews 
+  ON series.id=reviews.series_id 
+WHERE rating IS NULL;
+
+-- Challenge 5 with genre average rating --
+
+SELECT
+  genre,
+  ROUND(AVG(rating),2) AS avg_rating
+FROM series
+LEFT JOIN reviews
+  ON series.id = reviews.series_id
+GROUP by genre;
+
+-- Challenge 6 reviewers stats with power users  --
+
+SELECT 
+  first_name, 
+  last_name, 
+  COUNT(rating) AS COUNT, 
+  IFNULL(MIN(rating), 0) AS MIN, 
+  IFNULL(MAX(rating), 0) AS MAX, 
+  ROUND(IFNULL(AVG(rating), 0), 2) AS AVG, 
+CASE 
+  WHEN CONUT(rating) >= 10 THEN 'POWER USER' 
+  WHEN COUNT(rating) > 0 THEN 'ACTIVE' 
+  ELSE 'INACTIVE' 
+END  AS STATUS 
+FROM reviewers 
+LEFT JOIN reviews 
+  ON reviewers.id = reviews.reviewer_id 
+GROUP  BY reviewers.id;
+
