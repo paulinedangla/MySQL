@@ -140,3 +140,15 @@ LEFT JOIN reviews
   ON reviewers.id = reviews.reviewer_id 
 GROUP  BY reviewers.id;
 
+-- Challenge 7 joins 3 tables --
+
+SELECT 
+  title,  
+  rating,  
+  CONCAT(first_name, ' ', last_name) AS reviewer 
+FROM reviews 
+JOIN series 
+  ON series.id = reviews.series_id
+JOIN reviewers 
+  ON reviewers.id = reviews.reviewer_id 
+ORDER by title;
