@@ -92,7 +92,7 @@ JOIN reviews
   
 -- Challenge 4 with unreviewed series --
 
- - Step 1 : knowing the null values - 
+ - Step 1 : identifying the null values - 
 
 SELECT 
   title, 
