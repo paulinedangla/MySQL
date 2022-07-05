@@ -93,3 +93,25 @@ JOIN likes
 GROUP BY image_url 
 ORDER BY likes DESC
 LIMIT 1;
+
+-- Challenge 5 : calculate average number of photos per user -- 
+
+SELECT 
+  (SELECT COUNT(image_url) 
+    FROM photos)
+    /(SELECT COUNT(username) 
+      FROM users) AS average;
+
+-- Challenge 6 : Five most popular tags --
+
+SELECT 
+  tag_name, 
+  COUNT(tag_id) AS tag_popular 
+FROM tags 
+JOIN photo_tags 
+  ON tags.id = photo_tags.tag_id 
+GROUP BY tag_name 
+ORDER BY tag_popular DESC 
+LIMIT 5;
+
+-- Challenge 7 :
