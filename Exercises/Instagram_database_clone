@@ -6,29 +6,12 @@ CREATE TABLE users(
   username VARCHAR(255) UNIQUE, 
   created_at TIMESTAMP DEFAULT NOW());
 
-INSERT INTO users(username) VALUES
-  ('Bluethecat'),
-  ('CharlieBrown'),
-  ('ColtSteele');
-
 CREATE TABLE photos(
   id INT AUTO_INCREMENT PRIMARY KEY,
   image_url VARCHAR(255) NOT NULL,
   user_id INT NOT NULL,
   created_at TIMESTAMP DEFAULT NOW(),
   FOREIGN KEY (user_id) REFERENCES users(id));
-  
-INSERT INTO photos(image_url, user_id) VALUES
-  ('/alknfjds',1),
-  ('kfnskdfns',2),
-  ('mkldlgfdgn',2);
-
-SELECT 
-  image_url, 
-  username
-FROM photos
-JOIN users
-ON users.id = photos.user_id;
 
 CREATE TABLE comments(
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -54,3 +37,59 @@ CREATE TABLE follows (
   FOREIGN KEY(follower_id) REFERENCES users(id),
   FOREIGN KEY(followee_id) REFERENCES users(id),
   PRIMARY KEY(follower_id, followee_id));
+
+CREATE TABLE tags (
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  tag_name VARCHAR(255) UNIQUE,
+  created_at TIMESTAMP DEFAULT NOW());
+  
+CREATE TABLE photo_tags (
+  photo_id INTEGER NOT NULL,
+  tag_id INTEGER NOT NULL,
+  FOREIGN KEY(photo_id) REFERENCES photos(id),
+  FOREIGN KEY(tag_id) REFERENCES tags(id),
+  PRIMARY KEY(photo_id, tag_id));
+
+-- Adding datas from a dedicated file -- 
+
+source Instagram/ig_clone_data.sql
+
+-- Challenge 1 : Finding 5 oldest users --
+
+SELECT * FROM users 
+ORDER BY created_at 
+LIMIT 5;
+
+-- Challenge 2 : Most popular registration date --
+
+SELECT 
+  DATE_FORMAT(created_at,'%W') AS day, 
+  COUNT(username) AS registers 
+FROM users 
+GROUP BY day 
+ORDER BY registers DESC
+LIMIT 1;
+
+-- Challenge 3 : identify inactive users (users with no photos) --
+
+SELECT users.username 
+FROM users 
+LEFT JOIN photos 
+  ON users.id = photos.user_id 
+WHERE image_url IS NULL 
+ORDER BY username;
+
+-- Challenge 4 : identify most popular photo (and user who created it) --
+
+SELECT 
+  username, 
+  image_url, 
+  COUNT(photo_id) AS likes 
+FROM users 
+JOIN photos 
+  ON users.id=photos.user_id 
+JOIN likes 
+  ON photos.id = likes.photo_id 
+GROUP BY image_url 
+ORDER BY likes DESC
+LIMIT 1;
