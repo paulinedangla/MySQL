@@ -22,6 +22,7 @@ This workbook concentrates all the lessons and exercises that I followed during 
 
 - SUBQUERIES
 - CTE
+- HAVING
 - TOP
 - UNION
 - ALTER
