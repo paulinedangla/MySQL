@@ -10,3 +10,21 @@ WHERE
     SALARY > 2000
     AND MONTHS < 10
 ORDER BY EMPLOYEE_ID ASC;
+
+-- Samantha was tasked with calculating the average monthly salaries for all employees in the EMPLOYEES table, but did not realize her keyboard's 0 key was broken until after completing the calculation. She wants your help finding the difference between her miscalculation (using salaries with any zeros removed), and the actual average salary. Write a query calculating the amount of error (i.e.:  actual - miscalculed average monthly salaries), and round it up to the next integer --
+
+SELECT 
+CEIL(
+    AVG(SALARY)-
+    AVG(REPLACE(SALARY,'0',''))) 
+FROM EMPLOYEES;
+
+-- Write a query to find the maximum total earnings for all employees as well as the total number of employees who have maximum total earnings --
+
+SELECT 
+    salary * months AS earnings, 
+    COUNT(*)
+FROM Employee
+GROUP BY earnings
+ORDER BY earnings DESC
+LIMIT 1;
