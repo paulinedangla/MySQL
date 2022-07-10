@@ -20,7 +20,9 @@ This workbook concentrates all the lessons and exercises that I followed during 
 
 ## Who are you ?
 
-
+My name is [Pauline DANGLA](https://www.linkedin.com/in/pauline-dangla-a8907314b/) and I am currently a senior financial auditor in the Social and Solidarity Economy sector and in the Public sector in a large international firm.
+In short, my job consists of verifying the accounting, financial and legal principles of each accounting closing in order to ensure that the accounts are regular, faithful and sincere.
+I handle large databases daily on Excel and on our internal analysis tools.
 
 ## Why did you do this project ?
 
