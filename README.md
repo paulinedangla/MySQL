@@ -16,6 +16,24 @@ This workbook concentrates all the lessons and exercises that I followed during 
 ## Research
 
 
+
+
+## /!\ Shortcomings
+
+- SUBQUERIES
+- CTE
+- TOP
+- UNION
+- ALTER
+- SET
+- Aggregation functions
+- Mathematical functions
+- Logic functions
+- String functions
+- Query SELECT
+- Query FROM
+- Query WHERE
+
 # TELL US ABOUT YOURSELF
 
 ## Who are you ?
@@ -39,3 +57,11 @@ I have been working on this project since the beginning of June 2022. This learn
 This work is therefore still in progress and is regularly updated.
 
 ## What did you take away from this learning ?
+
+- SQL structured queries provide concrete solutions to complex issues.
+- SQL is a complete language because it allows databases to use a universal language to transmit information.
+
+## What are the new paths to explore now ?
+
+- The relationship between the SQL language and other languages.
+- Streamline my queries through several databases (virtual or not).
