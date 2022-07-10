@@ -31,7 +31,7 @@ My goal is to learn SQL then Python languages and then familiarize myself with T
 
 ## When did you work on this project ?
 
-I have been working on this project since the beginning of June 2022. This learning is separated into three stages:
+I have been working on this project since the beginning of June 2022. This learning is separated into three times :
 - June 2022: UDEMY online course.
 - First half of July 2022: exercises on HackerRank.
 - From the second half of July and until obtaining a job in the data sector: continuous research and projects.
