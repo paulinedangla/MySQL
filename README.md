@@ -35,6 +35,7 @@ I have been working on this project since the beginning of June 2022. This learn
 - June 2022 : UDEMY online course.
 - First half of July 2022 : exercises on HackerRank.
 - From the second half of July 2022 and until obtaining a job in the data sector : continuous research and projects.
+
 This work is therefore still in progress and is regularly updated.
 
 ## What did you take away from this learning ?
