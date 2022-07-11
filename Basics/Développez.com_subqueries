@@ -1,0 +1,39 @@
+-- 1. Subqueries Returning a Single Value --
+  -- 1.1. In the SELECT clause -- 
+
+-- The hotelier would like to know the evolution of the average price of his rooms compared to his reference rate on January 1, 2000 --
+  -- a. The average room price for any applicable date can be obtained by :
+
+SELECT 
+  TRF_DATE_DEBUT, 
+  AVG(TRF_CHB_PRIX) AS MOYENNE
+FROM TJ_TRF_CHB
+GROUP BY TRF_DATE_DEBUT;
+
+  -- b. The reference rate that interests us is visible on the 3rd line of the response. We can get it by specifying the query : --
+
+SELECT 
+  AVG(TRF_CHB_PRIX) AS MOYENNE
+FROM TJ_TRF_CHB
+WHERE TRF_DATE_DEBUT = '2000-01-01';
+
+  -- c. To calculate the spread, simply report this number by subtracting it from the average price of the request in example 1 : --
+
+SELECT 
+  TRF_DATE_DEBUT, 
+  AVG(TRF_CHB_PRIX) - 306.05 AS MOYENNE
+FROM TJ_TRF_CHB
+GROUP BY TRF_DATE_DEBUT;
+
+-- d. All you have to do now is replace the value 306.50 with the query that generated it : --
+
+SELECT
+  TRF_DATE_DEBUT, 
+  AVG(TRF_CHB_PRIX) - 
+  (
+    SELECT AVG(TRF_CHB_PRIX)
+    FROM TJ_TRF_CHB
+    WHERE TRF_DATE_DEBUT = '2000-01-01'
+  ) AS MOYENNE
+FROM TJ_TRF_CHB
+GROUP BY TRF_DATE_DEBUT;
