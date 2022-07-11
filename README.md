@@ -15,8 +15,18 @@ This workbook concentrates all the lessons and exercises that I followed during 
 
 ## Research
 
+### Subqueries
 
+I strengthened my knowledge on subqueries because it is an indispensable element in SQL practice.
 
+I followed the old but still relevant course on the [Développez.com site](https://sqlpro.developpez.com/cours/sqlaz/sousrequetes/#L2). This course allowed me to create sub-queries returning :
+- a single value
+- a list
+- a line
+- a table
+- empty and non-empty data
+
+I also learned the notion of correlated sub-queries and I finally understood the subtlety of the usefulness of a sub-query or a join.
 
 ## /!\ Shortcomings
 
