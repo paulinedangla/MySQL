@@ -25,7 +25,7 @@ SELECT
 FROM TJ_TRF_CHB
 GROUP BY TRF_DATE_DEBUT;
 
--- d. All you have to do now is replace the value 306.50 with the query that generated it : --
+  -- d. All you have to do now is replace the value 306.50 with the query that generated it : --
 
 SELECT
   TRF_DATE_DEBUT, 
