@@ -41,6 +41,13 @@ I followed the old but still relevant course on the [Développez.com site](https
 
 I also learned the notion of correlated sub-queries and I finally understood the subtlety of the usefulness of a sub-query or a join.
 
+### Common Table Expression (CTE) 
+
+I examined the notion of Common Table Expression (CTE) via reading an article on [Chartio](https://chartio.com/resources/tutorials/using-common-table-expressions/#how-to-create-a-cte). I understood that CTEs allow to:
+- prioritize a complex query into several simple queries linked together.
+- make it easier to read inside a query
+- increase the performance of a query
+
 # ABOUT MYSELF
 
 ## Who am I ?
