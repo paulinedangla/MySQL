@@ -41,7 +41,7 @@ I followed the old but still relevant course on the [Développez.com site](https
 
 I also learned the notion of correlated sub-queries and I finally understood the subtlety of the usefulness of a sub-query or a join.
 
-# TELL US ABOUT YOURSELF
+# ABOUT MYSELF
 
 ## Who am I ?
 
