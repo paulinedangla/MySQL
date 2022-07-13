@@ -11,7 +11,13 @@ This workbook concentrates all the lessons and exercises that I followed during 
 
 ## HackerRank exercises
 
-
+I did the HackerRank SQL challenges during the first half of July 2022. They covered :
+- basic selections
+- advanced selections
+- aggregation functions
+- basic joints
+- advanced joins
+- alternative queries
 
 ## Research
 
@@ -32,18 +38,6 @@ I also learned the notion of correlated sub-queries and I finally understood the
 
 - SUBQUERIES
 - CTE
-- HAVING
-- TOP
-- UNION
-- ALTER
-- SET
-- Aggregation functions
-- Mathematical functions
-- Logic functions
-- String functions
-- Query SELECT
-- Query FROM
-- Query WHERE
 
 # TELL US ABOUT YOURSELF
 
