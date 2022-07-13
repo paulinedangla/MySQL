@@ -135,8 +135,7 @@ ORDER BY
 
 -- 2. In the IN predicate --
 
--- First example : Mr. BOUVIER comes to reserve a room, and as he does it in advance, he would like to take a room in which he never slept during the year 2001.
-In this type of case, the negation is made by difference: all the rooms of the hotel LESS the rooms in which Mr. BOUVIER has already slept during the year 2001. --
+-- First example : Mr. BOUVIER comes to reserve a room, and as he does it in advance, he would like to take a room in which he never slept during the year 2001. In this type of case, the negation is made by difference: all the rooms of the hotel LESS the rooms in which Mr. BOUVIER has already slept during the year 2001. --
 
 -- a. Finding the rooms occupied by Mr. BOUVIER during the year 2001 is not very difficult --
 
@@ -186,6 +185,61 @@ GROUP  BY
   J.CHB_ID
 HAVING COUNT(C.CLI_ID) = 0
 ORDER  BY H.CHB_ID;
+
+-- Second example : The hotel manager would like to know which months (and years) had a number of nights equal to the nights recorded during any month of January --
+
+-- a. To find out the number of overnight stays for the months of January, simply add up the CHB_PLN_CLI_NB_PERS column of the TJ_CHB_PLN_CLI table, as follows --
+
+SELECT 
+  COUNT(CHB_PLN_CLI_NB_PERS) AS PERSONNE,
+  EXTRACT(YEAR FROM PLN_JOUR) AS ANNEE
+FROM TJ_CHB_PLN_CLI
+WHERE EXTRACT(MONTH FROM PLN_JOUR) = 1
+GROUP BY EXTRACT(YEAR FROM PLN_JOUR);
+
+-- b. Expand count to all months of all years --
+
+SELECT 
+  COUNT (CHB_PLN_CLI_NB_PERS) AS PERSONNE,
+  EXTRACT(YEAR FROM PLN_JOUR) ANNEE,
+  EXTRACT(MONTH FROM PLN_JOUR) MOIS
+FROM TJ_CHB_PLN_CLI
+GROUP BY 
+  EXTRACT(YEAR FROM PLN_JOUR), 
+  EXTRACT(MONTH FROM PLN_JOUR);
+
+-- c. Now, to only filter these counts on the values returned by the first query (404, 415, 418), all you have to do is use the HAVING clause as follows --
+
+SELECT 
+  COUNT (CHB_PLN_CLI_NB_PERS) AS PERSONNE,
+  EXTRACT(YEAR FROM PLN_JOUR) ANNEE,
+  EXTRACT(MONTH FROM PLN_JOUR) MOIS
+FROM TJ_CHB_PLN_CLI
+GROUP BY 
+  EXTRACT(YEAR FROM PLN_JOUR), 
+  EXTRACT(MONTH FROM PLN_JOUR)
+HAVING COUNT (CHB_PLN_CLI_NB_PERS) IN (404, 415, 418);
+
+-- d. All that remains is to replace the content of the last parenthesis located after the IN with the first query to which we only leave the count column in the SELECT clause --
+
+SELECT 
+  COUNT (CHB_PLN_CLI_NB_PERS) AS PERSONNE,
+  EXTRACT(YEAR FROM PLN_JOUR) ANNEE,
+  EXTRACT(MONTH FROM PLN_JOUR) MOIS
+FROM TJ_CHB_PLN_CLI
+GROUP BY 
+  EXTRACT(YEAR FROM PLN_JOUR), 
+  EXTRACT(MONTH FROM PLN_JOUR)
+HAVING COUNT (CHB_PLN_CLI_NB_PERS) IN 
+  (
+  SELECT COUNT (CHB_PLN_CLI_NB_PERS)
+  FROM TJ_CHB_PLN_CLI
+  WHERE EXTRACT(MONTH FROM PLN_JOUR) = 1
+  GROUP BY EXTRACT(YEAR FROM PLN_JOUR),
+  EXTRACT(MONTH FROM PLN_JOUR)
+  );
+
+-- 2.2 In ALL, ANY(SOME) predicates --
 
 
 
