@@ -47,18 +47,18 @@ I also learned the notion of correlated sub-queries and I finally understood the
 
 # TELL US ABOUT YOURSELF
 
-## Who are you ?
+## Who am I ?
 
 My name is [Pauline DANGLA](https://www.linkedin.com/in/pauline-dangla-a8907314b/) and I am currently a senior financial auditor in the Social and Solidarity Economy sector and in the Public sector in a large international firm.
 In short, my job consists of verifying the accounting, financial and legal principles of each accounting closing in order to ensure that the accounts are regular, faithful and sincere.
 I handle large databases daily on Excel and on our internal analysis tools.
 
-## Why did you do this project ?
+## Why did I do this project ?
 
 I chose to learn the SQL programming language because I am currently in professional retraining in the data sector.
 My goal is to learn SQL then Python languages and then familiarize myself with Tableau.
 
-## When did you work on this project ?
+## When did I work on this project ?
 
 I have been working on this project since the beginning of June 2022. This learning is separated into three times :
 - June 2022 : UDEMY online course.
@@ -67,7 +67,7 @@ I have been working on this project since the beginning of June 2022. This learn
 
 This work is therefore still in progress and is regularly updated.
 
-## What did you take away from this learning ?
+## What did I take away from this learning ?
 
 - SQL structured queries provide concrete solutions to complex issues.
 - SQL is a complete language because it allows databases to use a universal language to transmit information.
