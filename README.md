@@ -7,7 +7,14 @@ This workbook concentrates all the lessons and exercises that I followed during 
 
 ## UDEMY online course
 
-
+I took The Ultimate MySQL Bootcamp: Go from SQL Beginner to Expert online course on UDEMY during June 2022.
+I learned and carried out exercises on the following topics:
+- CRUD commands
+- types of data
+- logical operators
+- refining the functions
+- string functions
+- joins
 
 ## HackerRank exercises
 
@@ -33,11 +40,6 @@ I followed the old but still relevant course on the [Développez.com site](https
 - empty and non-empty data
 
 I also learned the notion of correlated sub-queries and I finally understood the subtlety of the usefulness of a sub-query or a join.
-
-## /!\ Shortcomings
-
-- SUBQUERIES
-- CTE
 
 # TELL US ABOUT YOURSELF
 
