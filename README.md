@@ -5,7 +5,7 @@ This workbook concentrates all the lessons and exercises that I followed during 
 - [HackerRank exercises on SQL](https://www.hackerrank.com/domains/sql).
 - The various research I conducted to consolidate my knowledge.
 
-## UDEMY online course
+## UDEMY online course 
 
 I took The Ultimate MySQL Bootcamp: Go from SQL Beginner to Expert online course on UDEMY during June 2022.
 I learned and carried out exercises on the following topics:
